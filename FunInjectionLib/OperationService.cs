@@ -12,7 +12,7 @@ public static class OperationService
     }
 
     public static bool IsValidOperation(string[] args) =>
-        args is not null && args.Length > 2 && Regex.IsMatch(args[0], "[a-z]{3,}");
+        args is not null && args.Length > 1 && Regex.IsMatch(args[0], "[a-z]{3,}");
 
     private static int TryOperation(string operationName, params int[] operands) =>
         OperationFactory.Get(operationName)(operands);
