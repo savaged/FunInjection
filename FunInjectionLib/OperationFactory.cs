@@ -1,3 +1,5 @@
+using System.Reflection;
+
 namespace FunInjectionLib;
 
 internal static class OperationFactory
@@ -22,5 +24,20 @@ internal static class OperationFactory
             nameof(Operations.Decr) => Operations.Decr,
             _ => Operations.Zero
         };
+        /*
+        return CreateDelegate(
+                Operation,
+                typeof(Operation).GetMethod(operationName, BindingFlags.Public | BindingFlags.Static));
+        */
     }
+
+    /*
+    private static Delegate CreateDelegate(MethodInfo method, int[] operands)
+    {
+        var parameters = method.GetParameters()
+            .Select(p => Expression.Parameter(p.ParameterType, p.Name)).ToArray();
+        var call = Expression.Call(method, parameters);
+        return Expression.Lambda(call, parameters).Compile();
+    }
+    */
 }
