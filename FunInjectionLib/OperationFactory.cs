@@ -4,9 +4,10 @@ namespace FunInjectionLib;
 
 internal static class OperationFactory
 {
-    public delegate int Operation(int[] operands);
+    //public delegate int Operation(int[] operands);
 
-    public static Operation Get(string operationName)
+    //public static Operation Get(string operationName)
+    public static Func<int[], int> Get(string operationName)
     {
         operationName = operationName?.FirstCharToUpper() ?? string.Empty;
         return operationName switch

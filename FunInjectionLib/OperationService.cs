@@ -4,17 +4,10 @@ namespace FunInjectionLib;
 
 public static class OperationService
 {
-    public static int TryOperation(string[] args)
-    {
-        if (!IsValidOperation(args))
-            return 0;
-        return TryOperation(args[0], args.ToInts());
-    }
-
-    public static bool IsValidOperation(string[] args) =>
-        args is not null && args.Length > 1 && Regex.IsMatch(args[0], "[a-z]{3,}");
-
-    private static int TryOperation(string operationName, int[] operands) =>
-        OperationFactory.Get(operationName)(operands);
-
+    public static bool IsValid(string[] args) =>
+        args.Length > 1 && Regex.IsMatch(args[0], "[a-z]{3,}");
+    
+    public static Func<int[], int> Get(string[] args) => OperationFactory.Get(args[0]);
+    
+    public static int Run(Func<int[], int> operation, int[] operands) => operation(operands);
 }

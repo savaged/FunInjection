@@ -1,6 +1,6 @@
 ﻿using FunInjectionLib;
 
-if (OperationService.IsValidOperation(args))
-    Console.WriteLine(Feedback.ForOperation(args[0], OperationService.TryOperation(args)));
-else
-    Console.WriteLine(Feedback.USAGE);
+Console.WriteLine(
+    OperationService.IsValid(args)
+    ? Feedback.ForOperation(args[0], OperationService.Run(OperationService.Get(args), args.ToInts()))
+    : Feedback.USAGE);
