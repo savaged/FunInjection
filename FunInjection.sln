@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FunInjection", "FunInjectio
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FunInjectionLib", "FunInjectionLib\FunInjectionLib.csproj", "{36F64BD9-655A-4CC5-8D8A-32BE79A42667}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FunInjectionTests", "FunInjectionTests\FunInjectionTests.csproj", "{3BD5FF2E-BAAF-4D43-8EAA-2A98ADA283B5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,5 +26,9 @@ Global
 		{36F64BD9-655A-4CC5-8D8A-32BE79A42667}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{36F64BD9-655A-4CC5-8D8A-32BE79A42667}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{36F64BD9-655A-4CC5-8D8A-32BE79A42667}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3BD5FF2E-BAAF-4D43-8EAA-2A98ADA283B5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3BD5FF2E-BAAF-4D43-8EAA-2A98ADA283B5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3BD5FF2E-BAAF-4D43-8EAA-2A98ADA283B5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3BD5FF2E-BAAF-4D43-8EAA-2A98ADA283B5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
