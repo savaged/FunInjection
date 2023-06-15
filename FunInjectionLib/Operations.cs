@@ -1,38 +1,28 @@
+using System.Collections.Generic;
 using System.Linq;
 
 namespace FunInjectionLib;
 
 internal static class Operations
 {
-    public static int Zero(int[] operands) => 0;
-
-    public static int Sum(int[] operands) => operands.Sum();
-
-    public static int Add(int[] operands) => Sum(operands);
-
-    public static int Sub(int[] operands) => operands[0] - Sum(operands.Skip(1).ToArray());
-
-    public static int Mult(int[] operands) => operands.Aggregate(1, (c,n) => c * n);
-
-    public static int Avg(int[] operands) => Convert.ToInt32(operands.Average());
-
-    public static int Mean(int[] operands) => Avg(operands);
-
-    public static int Max(int[] operands) => operands.Max();
-
-    public static int Min(int[] operands) => operands.Min();
-
-    public static int Inv(int[] operands) => operands.FirstOrDefault() * -1;
-
-    public static int Incr(int[] operands)
+    static Operations()
     {
-        var value = operands[0];
-        return ++value;
+        Registry = new Dictionary<string, Func<int[], int>>
+        {
+            { "zero", (o) => 0 },
+            { "sum", (o) => o.Sum() },
+            { "add", (o) => o.Sum() },
+            { "sub", (o) => o[0] - o.Skip(1).Sum() },
+            { "mult", (o) => o.Aggregate(1, (c,n) => c * n) },
+            { "avg", (o) => Convert.ToInt32(o.Average()) },
+            { "mean", (o) => Convert.ToInt32(o.Average()) },
+            { "max", (o) => o.Max() },
+            { "min", (o) => o.Min() },
+            { "inv", (o) => o.Select(i => i * -1).Sum() },
+            { "incr", (o) => o.Select(i => i++).Sum() },
+            { "decr", (o) => o.Select(i => i--).Sum() },
+        };
     }
 
-    public static int Decr(int[] operands)
-    {
-        var value = operands[0];
-        return --value;
-    }
+    public static IDictionary<string, Func<int[], int>> Registry { get; }
 }
