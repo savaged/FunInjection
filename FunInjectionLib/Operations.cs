@@ -26,13 +26,13 @@ internal static class Operations
 
     public static int Incr(int[] operands)
     {
-        var value = operands[1];
+        var value = operands[0];
         return ++value;
     }
 
     public static int Decr(int[] operands)
     {
-        var value = operands[1];
+        var value = operands[0];
         return --value;
     }
 }
