@@ -19,8 +19,8 @@ internal static class Operations
             { "max", (o) => o.Max() },
             { "min", (o) => o.Min() },
             { "inv", (o) => o.Select(i => i * -1).Sum() },
-            { "incr", (o) => o.Select(i => i++).Sum() },
-            { "decr", (o) => o.Select(i => i--).Sum() },
+            { "incr", (o) => o.Select(i => ++i).Sum() },
+            { "decr", (o) => o.Select(i => --i).Sum() },
         };
     }
 

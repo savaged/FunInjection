@@ -1,6 +1,6 @@
 ﻿namespace FunInjectionLib;
 
-public static class Feedback
+public static class FeedbackService
 {
     public const string USAGE =
         "Arguments: operation operand [operand] [operand]\n" +
