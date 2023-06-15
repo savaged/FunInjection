@@ -10,7 +10,7 @@ internal static class Operations
 
     public static int Add(int[] operands) => Sum(operands);
 
-    public static int Sub(int[] operands) => operands.Aggregate(Sum(operands), (c,n) => c - n);
+    public static int Sub(int[] operands) => operands[0] - Sum(operands.Skip(1).ToArray());
 
     public static int Mult(int[] operands) => operands.Aggregate(1, (c,n) => c * n);
 
