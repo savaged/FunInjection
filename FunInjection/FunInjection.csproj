@@ -1,7 +1,8 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <ItemGroup>
-    <ProjectReference Include="..\FunInjectionLib\FunInjectionLib.csproj" />
+    <ProjectReference Include="..\FunInjectionServices\FunInjectionServices.csproj" />
+    <ProjectReference Include="..\FunInjectionOperations\FunInjectionOperations.csproj" />
   </ItemGroup>
 
   <PropertyGroup>

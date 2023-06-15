@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace FunInjectionLib;
+namespace FunInjectionServices;
 
 public static class Extensions
 {

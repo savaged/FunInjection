@@ -1,3 +1,5 @@
+using FunInjectionOperations;
+
 namespace FunInjectionTests;
 
 public class FeatureTests
@@ -51,6 +53,8 @@ public class FeatureTests
     {
         var args = command?.ToArgs() ?? new string[] { string.Empty };
         return FeedbackService.ForOperation(
-                args[0], OperationService.Run(OperationService.Get(args), args.ToInts()));
+                args[0], OperationService.Run(
+                    OperationService.Get(
+                        new OperationFactory(new Register()), args), args.ToInts()));
     }
 }

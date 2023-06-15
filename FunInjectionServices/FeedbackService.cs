@@ -1,4 +1,4 @@
-﻿namespace FunInjectionLib;
+﻿namespace FunInjectionServices;
 
 public static class FeedbackService
 {
