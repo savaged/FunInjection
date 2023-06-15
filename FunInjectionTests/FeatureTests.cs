@@ -1,5 +1,3 @@
-using FunInjectionOperations;
-
 namespace FunInjectionTests;
 
 public class FeatureTests
