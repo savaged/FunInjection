@@ -51,10 +51,13 @@ public class FeatureTests
 
     private static string RunOperation(string command)
     {
-        var args = command?.ToArgs() ?? new string[] { string.Empty };
+        var args = command?.ToArgs() ?? new[] { string.Empty };
         return FeedbackService.ForOperation(
                 args[0], OperationService.Run(
                     OperationService.Get(
-                        new OperationFactory(new Register()), args), args.ToInts()));
+                        new OperationFactory(OperationsRegisterLoadService.TryLoadRegister(
+                            $"{Directory.GetCurrentDirectory()}{Path.DirectorySeparatorChar}" +
+                            "FunInjectionOperations.dll")),
+                        args), args.ToInts()));
     }
 }

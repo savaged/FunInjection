@@ -2,5 +2,5 @@
 
 public interface IOperations
 {
-    IDictionary<string, Func<int[], int>> Registry { get; }
+    IDictionary<string, Func<int[], int>> Registry { get; set; }
 }

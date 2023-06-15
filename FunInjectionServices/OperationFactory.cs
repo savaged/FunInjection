@@ -12,12 +12,9 @@ public class OperationFactory : IOperationFactory
             throw new ArgumentNullException(nameof(operations));
     }
     
-    public Func<int[], int> Get(string operationName)
-    {
-        operationName = operationName?.ToLower() ?? string.Empty;
-        return _operations.Registry.TryGetValue(operationName, out var value)
+    public Func<int[], int> Get(string operationName) =>
+        _operations.Registry.TryGetValue(operationName?.ToLower() ?? string.Empty, out var value)
             ? value : GetDefault();
-    }
 
-    internal static Func<int[], int> GetDefault() => o => 0;
+    public static Func<int[], int> GetDefault() => _ => 0;
 }

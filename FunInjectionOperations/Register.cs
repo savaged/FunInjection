@@ -4,6 +4,12 @@ namespace FunInjectionOperations;
 
 public class Register : IOperations
 {
+    public Register(IDictionary<string, Func<int[], int>>? registry)
+        : this()
+    {
+        Registry = registry ?? Registry;
+    }
+    
     public Register()
     {
         Registry = new Dictionary<string, Func<int[], int>>
@@ -23,5 +29,5 @@ public class Register : IOperations
         };
     }
 
-    public IDictionary<string, Func<int[], int>> Registry { get; }
+    public IDictionary<string, Func<int[], int>> Registry { get; set; }
 }
