@@ -4,33 +4,33 @@ namespace FunInjectionLib;
 
 internal static class Operations
 {
-    public static int Zero(params int[] operands) => 0;
+    public static int Zero(int[] operands) => 0;
 
-    public static int Sum(params int[] operands) => operands.Sum();
+    public static int Sum(int[] operands) => operands.Sum();
 
-    public static int Add(params int[] operands) => Sum(operands);
+    public static int Add(int[] operands) => Sum(operands);
 
-    public static int Sub(params int[] operands) => operands.Aggregate(Sum(operands), (c,n) => c - n);
+    public static int Sub(int[] operands) => operands.Aggregate(Sum(operands), (c,n) => c - n);
 
-    public static int Mult(params int[] operands) => operands.Aggregate(1, (c,n) => c * n);
+    public static int Mult(int[] operands) => operands.Aggregate(1, (c,n) => c * n);
 
-    public static int Avg(params int[] operands) => Convert.ToInt32(operands.Average());
+    public static int Avg(int[] operands) => Convert.ToInt32(operands.Average());
 
-    public static int Mean(params int[] operands) => Avg(operands);
+    public static int Mean(int[] operands) => Avg(operands);
 
-    public static int Max(params int[] operands) => operands.Max();
+    public static int Max(int[] operands) => operands.Max();
 
-    public static int Min(params int[] operands) => operands.Min();
+    public static int Min(int[] operands) => operands.Min();
 
-    public static int Inv(params int[] operands) => operands.FirstOrDefault() * -1;
+    public static int Inv(int[] operands) => operands.FirstOrDefault() * -1;
 
-    public static int Incr(params int[] operands)
+    public static int Incr(int[] operands)
     {
         var value = operands[1];
         return ++value;
     }
 
-    public static int Decr(params int[] operands)
+    public static int Decr(int[] operands)
     {
         var value = operands[1];
         return --value;
