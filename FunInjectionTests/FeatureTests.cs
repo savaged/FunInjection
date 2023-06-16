@@ -1,7 +1,17 @@
+using FunInjectionOperations;
+using Serilog;
+using Xunit.Abstractions;
+
 namespace FunInjectionTests;
 
 public class FeatureTests
 {
+    public FeatureTests(ITestOutputHelper output) =>
+        Log.Logger = new LoggerConfiguration()
+            .MinimumLevel.Debug()
+            .WriteTo.XunitTestOutput(output)
+            .CreateLogger();
+
     [Fact]
     public void TestSum() =>
         RunOperation("sum 3 2").Should().BeEquivalentTo("sum: 5");
@@ -49,13 +59,12 @@ public class FeatureTests
 
     private static string RunOperation(string command)
     {
+        var register = OperationsRegisterLoadService.TryLoadRegister();
+        if (register.Registry.Count == 1)
+            register = new Register();
         var args = command?.ToArgs() ?? new[] { string.Empty };
         return FeedbackService.ForOperation(
                 args[0], OperationService.Run(
-                    OperationService.Get(
-                        new OperationFactory(OperationsRegisterLoadService.TryLoadRegister(
-                            $"{Directory.GetCurrentDirectory()}{Path.DirectorySeparatorChar}" +
-                            "FunInjectionOperations.dll")),
-                        args), args.ToInts()));
+                    OperationService.Get(new OperationFactory(register), args), args.ToInts()));
     }
 }

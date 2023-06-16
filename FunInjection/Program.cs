@@ -1,4 +1,10 @@
 ﻿using FunInjectionServices;
+using Serilog;
+
+Log.Logger = new LoggerConfiguration()
+    .MinimumLevel.Debug()
+    .WriteTo.Console()
+    .CreateLogger();
 
 Console.WriteLine(
     OperationService.IsValid(args)
@@ -6,6 +12,6 @@ Console.WriteLine(
         OperationService.Get(new OperationFactory(
             OperationsRegisterLoadService.TryLoadRegister(
                 $"{Directory.GetCurrentDirectory()}{Path.DirectorySeparatorChar}" +
-                "FunInjectionOperations.dll")
+                $"OperationsLib{Path.DirectorySeparatorChar}FunInjectionOperations.dll", Log.Logger)
             ), args), args.ToInts()))
     : FeedbackService.USAGE);
