@@ -1,19 +1,26 @@
 var target = Argument("target", "Publish");
 var configuration = Argument("configuration", "Release");
-var slnFldr = "./";
-var outFldr = $"{slnFldr}artifacts";
+var slnDir = "./";
+var outDir = $"{slnDir}artifacts";
+
+Task("Clean")
+    .Does(() =>
+    {
+        CleanDirectory(outDir);
+    });
 
 Task("Restore")
     .Does(() =>
     {
-        DotNetRestore(slnFldr);
+        DotNetRestore(slnDir);
     });
 
 Task("Build")
+    .IsDependentOn("Clean")
     .IsDependentOn("Restore")
     .Does(() =>
     {
-        DotNetBuild(slnFldr, new DotNetBuildSettings
+        DotNetBuild(slnDir, new DotNetBuildSettings
         {
             NoRestore = true,
             Configuration = configuration
@@ -24,7 +31,7 @@ Task("Test")
     .IsDependentOn("Build")
     .Does(() =>
     {
-        DotNetTest(slnFldr, new DotNetTestSettings
+        DotNetTest(slnDir, new DotNetTestSettings
         {
             NoRestore = true,
             Configuration = configuration,
@@ -36,12 +43,12 @@ Task("Publish")
     .IsDependentOn("Test")
     .Does(() =>
     {
-        DotNetPublish(slnFldr, new DotNetPublishSettings
+        DotNetPublish(slnDir, new DotNetPublishSettings
         {
             NoRestore = true,
             Configuration = configuration,
             NoBuild = true,
-            OutputDirectory = outFldr
+            OutputDirectory = outDir
         });
     });
 
