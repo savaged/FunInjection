@@ -1,6 +1,5 @@
 using System.Reflection;
 using FunInjectionAPI;
-using Serilog;
 
 namespace FunInjectionServices;
 
@@ -42,7 +41,7 @@ public static class OperationsRegisterLoadService
         }
         catch (FileNotFoundException e)
         {
-            _logger?.Error(e, "It must be you!");
+            _logger?.WriteLine(e);
             value = null;
         }
         return value;
